@@ -5,24 +5,60 @@ const app = new Application({
 	resolution: window.devicePixelRatio || 1,
 	autoDensity: true,
 	backgroundColor: 0x6495ed,
-	width: 640,
-	height: 480
+	width: 1280,
+	height: 720,
 });
-Loader.shared.add({url:"malakian.png", name: "myMalakian"});
-Loader.shared.add ({url: "clampy.png", name: "Clamply"});
+
+window.addEventListener("resize",()=>{
+const scaleX = window.innerWidth / app.screen.width;
+const scaleY = window.innerHeight / app.screen.height; 
+const scale = Math.min (scaleX , scaleY);
+
+const gameWidth = Math.round (app.screen.width * scale);
+const gameHeight = Math.round (app.screen.height * scale); 
+
+const marginHorizontal = Math.floor ((window.innerWidth - gameWidth)/2);
+const marginVertical = Math.floor ((window.innerHeight - gameHeight)/2);
+
+app.view.style.width = gameWidth + "px" ;
+app.view.style.height = gameHeight + "px";
+
+app.view.style.marginLeft = marginHorizontal + "px";
+app.view.style.marginRight = marginHorizontal + "px";
+app.view.style.marginTop = marginVertical + "px";
+app.view.style.marginBottom = marginVertical + "px";
+
+});
+
+window.dispatchEvent(new Event("resize"));
+
+Loader.shared.add({url:"./malakian.png", name: "myMalakian"});
+Loader.shared.add({url:"./impresionismo.png", name:"outerspace"});
 
 Loader.shared.onComplete.add(()=>{
 
+const Malakian: Sprite = Sprite.from("myMalakian");
 
-const clampy: Sprite = Sprite.from("myMalakian");
-console.log ("hola mundo uwu" , clampy.width , clampy.height);
+Malakian.anchor.set(0.5,0.5);
 
-// clampy.anchor.set(0);
+Malakian.x = 640;
+Malakian.y = 360;
 
-clampy.x = 0;
-clampy.y = 0;
+Malakian.scale.set(0.3);
 
-app.stage.addChild(clampy);
+const impresionismo: Sprite = Sprite.from ("outerspace")
+
+impresionismo.anchor.set (0.5,0.5);
+
+
+impresionismo.x = 640;
+impresionismo.y = 360;
+
+impresionismo.scale.set(1);
+app.stage.addChild(impresionismo);
+app.stage.addChild(Malakian);
+
+
 });
 
 Loader.shared.load();
