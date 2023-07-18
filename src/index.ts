@@ -1,4 +1,6 @@
-import { Application, Loader, Sprite } from 'pixi.js'
+import { Application, Loader} from 'pixi.js';
+import { assets } from './assets';
+import { Scene } from './Scene';
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
@@ -32,32 +34,11 @@ app.view.style.marginBottom = marginVertical + "px";
 
 window.dispatchEvent(new Event("resize"));
 
-Loader.shared.add({url:"./malakian.png", name: "myMalakian"});
-Loader.shared.add({url:"./impresionismo.png", name:"outerspace"});
+Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
-
-const Malakian: Sprite = Sprite.from("myMalakian");
-
-Malakian.anchor.set(0.5,0.5);
-
-Malakian.x = 640;
-Malakian.y = 360;
-
-Malakian.scale.set(0.3);
-
-const impresionismo: Sprite = Sprite.from ("outerspace")
-
-impresionismo.anchor.set (0.5,0.5);
-
-
-impresionismo.x = 640;
-impresionismo.y = 360;
-
-impresionismo.scale.set(1);
-app.stage.addChild(impresionismo);
-app.stage.addChild(Malakian);
-
+	const myScene = new Scene; 
+	app.stage.addChild(myScene);
 
 });
 
