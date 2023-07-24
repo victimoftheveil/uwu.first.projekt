@@ -2,8 +2,8 @@ import { Container } from "pixi.js";
 
 export class SpaceMalakian extends Container {
 
-    contructor ()
-     {
+    constructor ()
+     { super(); 
         const outspaceMalakian: SpaceMalakian = new SpaceMalakian();
 
         outspaceMalakian.x = 640;

@@ -2,7 +2,8 @@ import { Container, Sprite } from "pixi.js";
 
 export class SpaceMalakian extends Container {
 
-    contructor () {
+    constructor () {
+        super ();
 const Malakian: Sprite = Sprite.from("myMalakian");
 
 Malakian.anchor.set(0.5,0.5);
