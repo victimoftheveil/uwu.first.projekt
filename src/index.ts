@@ -1,6 +1,6 @@
 import { Application, Loader} from 'pixi.js';
 import { assets } from './assets';
-import { Scene } from './Scene';
+import { SpaceMalakian } from './Scene';
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
@@ -37,9 +37,8 @@ window.dispatchEvent(new Event("resize"));
 Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
-	const myScene = new Scene; 
-	app.stage.addChild(myScene);
-
+	const mySpaceMalakian : SpaceMalakian = new SpaceMalakian ();
+	app.stage.addChild (mySpaceMalakian);
 });
 
 Loader.shared.load();

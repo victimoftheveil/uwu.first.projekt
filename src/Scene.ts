@@ -4,7 +4,6 @@ export class SpaceMalakian extends Container {
 
     contructor ()
      {
-           super();
         const outspaceMalakian: SpaceMalakian = new SpaceMalakian();
 
         outspaceMalakian.x = 640;
